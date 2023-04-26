@@ -1,11 +1,14 @@
 const express = require('express');
+require('./db')
+const ItManagerRoutes = require('./routes/ItManager')
+
+const PORT = process.env.PORT || 3030;
 
 const app = express();
 
-app.get('/' , (req,res) =>{
-    res.send("welcome")
-});
+app.use(express.json());
 
-app.listen(3030, () =>{
-    console.log('server started on port 3030')
+app.use('/admin',ItManagerRoutes);
+app.listen(PORT, () =>{
+    console.log(`server started on port ${PORT}`)
 });
