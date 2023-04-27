@@ -30,3 +30,18 @@ const ProfessorSchema = new mongoose.Schema({
 const Professor = mongoose.model('Professor',ProfessorSchema);
 
 module.exports = Professor;
+
+
+
+/*
+{
+  "name": "ali",
+  "id": "0050522815",
+  "password": "12345678",
+  "email": "ali@gmail.com",
+  "phonenumber": "09354368739",
+  "college": "CE",
+  "field": "CS",
+  "order": "professor",
+}
+*/
