@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 
 const ProfessorSchema = new mongoose.Schema({
+    username:{
+        type:String
+    },
     name:{
         type : String
     },
@@ -35,6 +38,7 @@ module.exports = Professor;
 
 /*
 {
+  "username":"alli",
   "name": "ali",
   "id": "0050522815",
   "password": "12345678",
@@ -42,6 +46,6 @@ module.exports = Professor;
   "phonenumber": "09354368739",
   "college": "CE",
   "field": "CS",
-  "order": "professor",
+  "order": "professor"
 }
 */

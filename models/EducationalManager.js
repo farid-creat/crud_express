@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 
 const EducationalManagerSchema = new mongoose.Schema({
+    username:{
+        type:String
+    },
     name:{
         type : String
     },

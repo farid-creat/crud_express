@@ -18,3 +18,12 @@ const CourseSchema = new mongoose.Schema({
 const Course = mongoose.model('Course',CourseSchema);
 
 module.exports = Course;
+
+/*
+{
+    "name":"AlGO",
+    "prerequisite":["DB"],
+    "need":"AP",
+    "unit":3
+}
+*/
