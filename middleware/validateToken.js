@@ -27,15 +27,42 @@ const validate = (req, res, next) => {
 
 
 const validateManager = (req, res, next) => {
-    let token;
     let user = req.user;
-    if(user.role !="admin"){
+    if(user.role !="ItManager"){
         res.status(500).send("acces denied")
         return;
     }
     next()
 }
+
+
+
+
+const validateEducatedManager = (req, res, next) => {
+    let user = req.user;
+    if(user.role !="EducationalManager"){
+        res.status(500).send("acces denied")
+        return;
+    }
+    next()
+}
+
+
+const validateStudent = (req, res, next) => {
+    let user = req.user;
+    if(user.role !="Student"){
+        res.status(500).send("acces denied")
+        return;
+    }
+    next()
+}
+
+
+
+
 module.exports = {
     validate,
-    validateManager
+    validateManager,
+    validateStudent,
+    validateEducatedManager
 }

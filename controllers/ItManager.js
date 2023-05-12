@@ -1,3 +1,4 @@
+const EducationalManager = require("../models/EducationalManager");
 const Professor = require("../models/Professor");
 const Student = require("../models/Student");
 
@@ -17,8 +18,6 @@ const updateProfessor = (req ,res)=>{
 const deleteProfessor = (req ,res)=>{
     Professor.findOneAndDelete({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
 }
-
-
 
 const  addProfessor = (req ,res)=>{
     const body = req.body;
@@ -55,7 +54,6 @@ const getAllStudentById = (req ,res)=>{
 }
 
 const updateStudent = (req ,res)=>{
-    console.log(req.params);
     Student.findOneAndUpdate({id:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
 }
 
@@ -92,7 +90,69 @@ const addStudent = (req ,res)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+const getAllmanager = (req ,res)=>{
+    EducationalManager.find({}).then(result => res.send(result)).catch(err => console.log(err));
+}
+
+const getAllManagerById = (req ,res)=>{
+    EducationalManager.find({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+}
+
+const updateManager = (req ,res)=>{
+    console.log(req.params);
+    EducationalManager.findOneAndUpdate({id:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
+}
+
+const deleteManager = (req ,res)=>{
+
+    EducationalManager.findOneAndDelete({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+}
+
+
+const addmanager = (req ,res)=>{
+    const body = req.body;
+    const educationalManager = new EducationalManager(req.body);
+    if(!educationalManager.username){
+        res.status(400).send("please enter username!");
+        return;
+    }
+    else if(!educationalManager.password){
+        res.status(400).send("please enter password!");
+        return;
+    }
+    EducationalManager.find({username:educationalManager.username}).then(result => {
+        if(result.length!=0){
+            res.status(400).send("username is already used!");
+            return;
+        }
+        else{
+            educationalManager.save().then(()=>{res.status(200).send(educationalManager)}).catch((err)=>{console.log(err)});
+        }
+    });
+}
+
+
+
+
+
+
+
+
 module.exports = {
+    addmanager,
+    deleteManager,
+    updateManager,
+    getAllManagerById,
+    getAllmanager,
     getAllProfessor,
     addProfessor,
     getAllProfessorById,

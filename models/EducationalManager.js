@@ -27,3 +27,16 @@ const EducationalManagerSchema = new mongoose.Schema({
 const EducationalManager = mongoose.model('EducationalManager',EducationalManagerSchema);
 
 module.exports = EducationalManager;
+
+
+/*
+{
+  "username":"akbar",
+  "name": "ali",
+  "id": "0050522815",
+  "password": "12345678",
+  "email": "ali@gmail.com",
+  "phonenumber": "09354368739",
+  "college": "CE",
+}
+*/

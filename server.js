@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use('/admin',validate,validateManager,ItManagerRoutes);
 app.use('/login',loginRoutes)
+app.use("/course",validate,)
 app.listen(PORT, () =>{
     console.log(`server started on port ${PORT}`)
 });

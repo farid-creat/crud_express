@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const EducationalManager = require('../models/EducationalManager');
 const ItManager = require("../models/ItManager");
 const Professor = require("../models/Professor");
 const Student = require("../models/Student");
@@ -21,11 +22,75 @@ const login = (req ,res)=>{
         res.status(400).send("all fiels are mandatory")
         return;
     }
-
+    
     ItManager.find({username:username}).then(result => {
         if(result.length==0){
-            res.status(401).send("username is not valid!");
-            return;
+            EducationalManager.find({username:username}).then(
+                resultEM =>{
+                    if(resultEM.length==0){
+                        Professor.find({username:username}).then( resultP =>{
+                            if(resultP.length==0){
+                                Student.find({username:username}).then(resultS =>{
+                                    if(resultS.length==0){
+                                        res.status(401).send("username is not correct!")
+                                        return;
+                                    }
+                                    else{
+                                        if(resultS[0].password !=password){
+                                            res.status(401).send("paassword is in correct!")
+                                            return;
+                                        }
+                                        console.log(process.env.ACCES_TOKEN_SECERET)
+                                        var accestoken = jwt.sign({
+                                            user:{
+                                                username:resultS[0].username,
+                                                role:"Student"
+                                            },
+                                        },process.env.ACCES_TOKEN_SECERET,
+                                        {expiresIn:"30m"}
+                                        );
+                                        res.status(200).send(accestoken);
+                                    }
+                                })
+                            }
+                            else{
+                                if(resultP[0].password !=password){
+                                    res.status(401).send("paassword is in correct!")
+                                    return;
+                                }
+                                console.log(process.env.ACCES_TOKEN_SECERET)
+                                var accestoken = jwt.sign({
+                                    user:{
+                                        username:resultP[0].username,
+                                        role:"Professor"
+                                    },
+                                },process.env.ACCES_TOKEN_SECERET,
+                                {expiresIn:"30m"}
+                                );
+                                res.status(200).send(accestoken);
+        
+                            }
+                        });
+                    }
+                    else{
+                        if(resultEM[0].password !=password){
+                            res.status(401).send("paassword is in correct!")
+                            return;
+                        }
+                        console.log(process.env.ACCES_TOKEN_SECERET)
+                        var accestoken = jwt.sign({
+                            user:{
+                                username:resultEM[0].username,
+                                role:"EducationalManager"
+                            },
+                        },process.env.ACCES_TOKEN_SECERET,
+                        {expiresIn:"30m"}
+                        );
+                        res.status(200).send(accestoken);
+
+                    }
+                })
+
         }
         else{
             if(result[0].password !=password){
@@ -36,7 +101,7 @@ const login = (req ,res)=>{
             var accestoken = jwt.sign({
                 user:{
                     username:result[0].username,
-                    role:"admin"
+                    role:"ItManager"
                 },
             },process.env.ACCES_TOKEN_SECERET,
             {expiresIn:"30m"}
@@ -44,7 +109,6 @@ const login = (req ,res)=>{
             res.status(200).send(accestoken);
         }
     });
-
 
 }
 
