@@ -48,6 +48,26 @@ const validateEducatedManager = (req, res, next) => {
 }
 
 
+const validateEducatedManagerorstudent = (req, res, next) => {
+    let user = req.user;
+    if(user.role !="EducationalManager" && user.role!="Student"){
+        res.status(500).send("acces denied")
+        return;
+    }
+    next()
+}
+
+
+const validateStudentId = (req, res, next) => {
+    let user = req.user;
+    if(user.username != req.params.id){
+        res.status(400).send("this is not your username!")
+        return;
+    }
+    next()
+}
+
+
 const validateStudent = (req, res, next) => {
     let user = req.user;
     if(user.role !="Student"){
@@ -64,5 +84,7 @@ module.exports = {
     validate,
     validateManager,
     validateStudent,
-    validateEducatedManager
+    validateEducatedManager,
+    validateEducatedManagerorstudent,
+    validateStudentId
 }

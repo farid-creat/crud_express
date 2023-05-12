@@ -7,19 +7,31 @@ const getAllProfessor = (req ,res)=>{
     Professor.find({}).then(result => res.send(result)).catch(err => console.log(err));
 }
 
-const getAllProfessorById = (req ,res)=>{
-    Professor.find({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+const getAllProfessorById = async (req ,res)=>{
+    const prof = await Professor.find({username:req.params.id})
+    if(prof.length==0){
+        res.status(401).send("invalid username!")
+        return;
+    }
+    res.status(200).send(prof)
 }
 
 const updateProfessor = (req ,res)=>{
-    Professor.findOneAndUpdate({id:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
+    Professor.findOneAndUpdate({username:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
 }
 
-const deleteProfessor = (req ,res)=>{
-    Professor.findOneAndDelete({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+const deleteProfessor =async (req ,res)=>{
+    const findprofessor =await Professor.find({username:req.params.id});
+    if(!findprofessor){
+        res.status(401).send("invalid username!")
+        return ;
+    }
+    const del = await Professor.findOneAndDelete({username:req.params.id});
+    res.status(201).send(del);
 }
 
 const  addProfessor = (req ,res)=>{
+    console.log(req.body)
     const body = req.body;
     const professor = new Professor(req.body);
     if(!professor.username){
@@ -49,17 +61,43 @@ const getAllStudent = (req ,res)=>{
     Student.find({}).then(result => res.send(result)).catch(err => console.log(err));
 }
 
-const getAllStudentById = (req ,res)=>{
-    Student.find({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+const getAllStudentById = async(req ,res)=>{
+    const stu = await Student.find({username:req.params.id})
+    if(stu.length==0){
+        res.status(401).send("invalid username!")
+        return;
+    }
+    res.status(200).send(stu)
+
 }
 
 const updateStudent = (req ,res)=>{
-    Student.findOneAndUpdate({id:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
+    Student.find({username:req.params.id}).then(result =>{
+        if(result.length==0){
+            res.status(400).send("invalid username!")
+            return;
+        }
+        else{
+            Student.findOneAndUpdate({username:req.params.id}, req.body,{new:true}).then(resultfind => res.status(200).send(resultfind)).catch(err => console.log(err));
+        }
+    })
+   
 }
 
 const deleteStudent = (req ,res)=>{
+    Student.find({username:req.params.id}).then(result =>{
+        if(result.length==0){
+            res.status(400).send("invalid username!")
+            return;
+        }
+        else{
+            Student.findOneAndDelete({username:req.params.id}).then(resultdel => res.status(200).send(resultdel)).catch(err => console.log(err));
+        }
+    })
+   
 
-    Student.findOneAndDelete({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+
+ 
 }
 
 
@@ -108,8 +146,15 @@ const getAllManagerById = (req ,res)=>{
 }
 
 const updateManager = (req ,res)=>{
-    console.log(req.params);
-    EducationalManager.findOneAndUpdate({id:req.params.id}, req.body,{new:true}).then(result => res.send(result)).catch(err => console.log(err));
+    EducationalManager.find({username:req.params.id}).then(result =>{
+        if(result.length==0){
+            res.status(400).send("invalid username!")
+            return;
+        }
+        else{
+            EducationalManager.findOneAndUpdate({username:req.params.id}, req.body,{new:true}).then(resultfind => res.status(200).send(resultfind)).catch(err => console.log(err));
+        }
+    })
 }
 
 const deleteManager = (req ,res)=>{

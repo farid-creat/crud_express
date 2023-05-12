@@ -13,7 +13,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.4"
+    "mongoose": "^7.0.4",
+    "postman-to-openapi": "^3.0.1",
+    "postman2openapi": "^1.0.0",
+    "swagger-ui-express": "^4.6.3",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

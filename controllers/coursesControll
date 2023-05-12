@@ -1,0 +1,36 @@
+const Course = require("../models/Course");
+const EducationalManager = require("../models/EducationalManager");
+const Professor = require("../models/Professor");
+const Student = require("../models/Student");
+const TermCourse = require("../models/TermCourse");
+
+
+
+
+const getCourses =async (req, res) => {
+    try {
+        let user = req.user;
+        const result=null;
+        const result1=null;
+        if(user.role =="Student"){
+            colege = await Student.find({username:user.username}).college;
+            classes = await TermCourse.find({college:colege,name:req.params.id})
+            res.status(201).send(classes).catch(err => console.log(err));
+        }
+        if(user.role == "EducationalManager"){
+            result = await TermCourse.find({});
+            result1 = await Course.find({});
+            res.status(201).send({result,result1}).catch(err.status(500).send(console.log(err)))
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
+
+
+module.exports = {
+    getCourses
+}
+

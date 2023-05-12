@@ -30,7 +30,10 @@ const TermCourseSchema = new mongoose.Schema({
     },
     term:{
         type:Number
-    }
+    },
+    college:{
+        type:String
+    },
 });
 
 const TermCourse = mongoose.model('TermCourse',TermCourseSchema);

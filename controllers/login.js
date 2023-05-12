@@ -17,6 +17,7 @@ const itManager = ItManager({
 
 
 const login = (req ,res)=>{
+    console.log(req.body)
     const{username, password} = req.body;
     if(!username || !password){
         res.status(400).send("all fiels are mandatory")
