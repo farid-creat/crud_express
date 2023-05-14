@@ -9,8 +9,8 @@ const TermCourse = require("../models/TermCourse");
 
 const getStudentById =async (req, res) => {
     try {
-        result = await Student.find({id:req.params.id});
-        res.status(201).send({result}).catch(err.status(500).send(console.log(err)))
+        result = await Student.find({username:req.params.id});
+        res.status(201).send({result})
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });
@@ -19,8 +19,8 @@ const getStudentById =async (req, res) => {
 
 const updateStudentByusername =async (req, res) => {
     try {
-        result =Student.findOneAndUpdate({id:req.params.id}, req.body,{new:true});
-        res.status(201).send({result}).catch(err.status(500).send(console.log(err)))
+        result = await Student.findOneAndUpdate({username:req.params.id}, req.body,{new:true});
+        res.status(201).send({result})
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });

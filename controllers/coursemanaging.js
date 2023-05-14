@@ -1,4 +1,6 @@
 const Course = require("../models/Course");
+const Professor = require("../models/Professor");
+const Student = require("../models/Student");
 
 const TermCourse = require("../models/TermCourse");
 
@@ -8,9 +10,8 @@ const TermCourse = require("../models/TermCourse");
 const createCourse = (req, res) => {
     const body = req.body;
     const termCourse = new TermCourse(req.body);
-    const course = null;
+    const course = new Course(req.body);;
     if (!termCourse.professorname) {
-        course = new Course(req.body);
         Course.find({ name: course.name }).then(result => {
             if (result.length != 0) {
                 res.status(400).send("name is already used!");
@@ -44,29 +45,28 @@ const createCourse = (req, res) => {
 
 const updateCourse = (req, res) => {
     const termCourse = new TermCourse(req.body);
-    const course = null;
+    const course = new Course(req.body);;
     if (!termCourse.professorname) {
-        course = new Course(req.body);
-        Course.find({ name: course.name }).then(result => {
+        Course.find({ name: req.params.id }).then(result => {
             if (result.length == 0) {
-                res.status(400).send("username is already not valid!");
+                res.status(400).send("username is not valid!");
                 return;
             }
             else {
-                Course.findOneAndUpdate({ name: course.name }, req.body, { new: true }).then(result => res.status(201).send(result)).catch(err => console.log(err));
+                Course.findOneAndUpdate({ name: req.params.id }, req.body, { new: true }).then(result => res.status(201).send(result)).catch(err => console.log(err));
             }
         });
 
     }
     else {
 
-        TermCourse.find({ name: termCourse.name }).then(result => {
+        TermCourse.find({ name: req.params.id }).then(result => {
             if (result.length == 0) {
                 res.status(400).send("username is not valid!");
                 return;
             }
             else {
-                TermCourse.findOneAndUpdate({ name: termCourse.name }, req.body, { new: true }).then(result => res.status(201).send(result)).catch(err => console.log(err));
+                TermCourse.findOneAndUpdate({ name: req.params.id }, req.body, { new: true }).then(result => res.status(201).send(result)).catch(err => console.log(err));
             }
         });
 
@@ -80,7 +80,8 @@ const updateCourse = (req, res) => {
 
 const deleteCourse = (req, res) => {
     const name = req.params.id;
-    TermCourse.find({name:id}).then(result =>{
+    console.log(name)
+    TermCourse.find({name:name}).then(result =>{
         if(result.length==0){
             Course.find({name:name}).then(resultC =>{
                 if(resultC.length ==0){
@@ -108,23 +109,41 @@ const deleteCourse = (req, res) => {
 const getCourseById =async (req, res) => {
     try {
         let user = req.user;
-        const result=null;
-        const result1=null;
+        const termCourse=await TermCourse.find({name:req.params.id});;
+        const course=await Course.find({name:req.params.id});;
+        const colege = await Student.find({username:user.username});
+        const colegep = await Professor.find({username:user.username});
         if(user.role =="Student"){
-            result = await TermCourse.find({})
-            res.status(201).send(result).catch(err => console.log(err));
-
-
-            colege = await Student.find({username:user.username}).college;
-            classes = await TermCourse.find({college:colege , })
-            res.status(201).send(classes).catch(err => console.log(err));
-
+            if (colege.length > 0) {
+                const classes = await TermCourse.find({ college: colege[0].college,name:req.params.id })
+                if(classes.length==0){
+                    res.status(200).send("there is no class")
+                }
+                else{
+                    res.status(201).send(classes)
+                }
+            } else {
+                res.status(400).send("not found any!")
+            }
         }
         if(user.role == "EducationalManager"){
-            result = await TermCourse.find({name:req.body.name});
-            result1 = await Course.find({name:req.body.name});
-            res.status(201).send({result,result1}).catch(err.status(500).send(console.log(err)))
+            res.status(201).send({termCourse,course})
         }
+        if(user.role =="Professor"){
+            if (colegep.length > 0) {
+                const classes = await TermCourse.find({ college: colegep[0].college,name:req.params.id })
+                if(classes.length==0){
+                    res.status(200).send("there is no class")
+                }
+                else{
+                    res.status(201).send(classes)
+                }
+            } else {
+                res.status(400).send("not found any!")
+            }
+        }
+
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error' });

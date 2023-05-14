@@ -1,10 +1,10 @@
 const express = require('express');
 const { getCourses } = require('../controllers/coursesControll');
-const { validateEducatedManagerorstudent } = require('../middleware/validateToken');
+const { validateEducatedManagerorstudentorProfessor } = require('../middleware/validateToken');
 
 const Router = express.Router();
 
-Router.get('/courses',validateEducatedManagerorstudent , getCourses);
+Router.get('/',validateEducatedManagerorstudentorProfessor , getCourses);
 
 
 module.exports = Router;

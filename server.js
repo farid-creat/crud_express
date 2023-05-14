@@ -20,17 +20,19 @@ app.use(express.json());
 
 app.use('/admin',validate,validateManager,ItManagerRoutes);
 app.use('/login',loginRoutes);
+
+
 app.use("/course",validate,coursApiRoutes);
 
 app.use("/courses",validate,coursesApi);
 
-app.use("./students",validate,StidentsApi)
+app.use("/students",validate,StidentsApi)
 
-app.use("./student",validate,StudentApi)
+app.use("/student",validate,StudentApi)
 
-app.use("./Professors",validate,ProfessorsApi)
+app.use("/Professors",validate,ProfessorsApi)
 
-app.use("./Professor",validate,professorApi)
+app.use("/Professor",validate,professorApi)
 
 app.listen(PORT, () =>{
     console.log(`server started on port ${PORT}`)

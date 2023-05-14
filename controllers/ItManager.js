@@ -142,7 +142,14 @@ const getAllmanager = (req ,res)=>{
 }
 
 const getAllManagerById = (req ,res)=>{
-    EducationalManager.find({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+    EducationalManager.find({username:req.params.id}).then(result => {
+        if (result.length ==0 ){
+            res.status(400).send("username is invalid!");
+        }
+        else{
+            res.status(200).send(result[0]);
+        }
+    }).catch(err => res.status(500).send(err));
 }
 
 const updateManager = (req ,res)=>{
@@ -158,8 +165,15 @@ const updateManager = (req ,res)=>{
 }
 
 const deleteManager = (req ,res)=>{
-
-    EducationalManager.findOneAndDelete({id:req.params.id}).then(result => res.send(result)).catch(err => console.log(err));
+    EducationalManager.find({username:req.params.id}).then(result =>{
+        if(result.length==0){
+            res.status(400).send("invalid username!")
+            return;
+        }
+        else{
+            EducationalManager.findOneAndDelete({username:req.params.id}).then(resultdel => res.status(200).send(resultdel)).catch(err => console.log(err));
+        }
+    })
 }
 
 

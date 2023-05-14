@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken")
 
 
 const validate = (req, res, next) => {
+    console.log("1111")
     let token;
     let authHeader = req.headers.Authorization || req.headers.authorization;
     if (authHeader && authHeader.startsWith("Bearer")) {
@@ -39,6 +40,7 @@ const validateManager = (req, res, next) => {
 
 
 const validateEducatedManager = (req, res, next) => {
+    console.log("aaaaaaa")
     let user = req.user;
     if(user.role !="EducationalManager"){
         res.status(500).send("acces denied")
@@ -51,6 +53,15 @@ const validateEducatedManager = (req, res, next) => {
 const validateEducatedManagerorstudent = (req, res, next) => {
     let user = req.user;
     if(user.role !="EducationalManager" && user.role!="Student"){
+        res.status(500).send("acces denied")
+        return;
+    }
+    next()
+}
+
+const validateEducatedManagerorstudentorProfessor = (req, res, next) => {
+    let user = req.user;
+    if(user.role !="EducationalManager" && user.role!="Student"&& user.role!="Professor"){
         res.status(500).send("acces denied")
         return;
     }
@@ -78,6 +89,24 @@ const validateStudent = (req, res, next) => {
 }
 
 
+const validateProfessor = (req, res, next) => {
+    let user = req.user;
+    if(user.role !="Professor"){
+        res.status(500).send("acces denied")
+        return;
+    }
+    next()
+}
+
+const validateProfessorId = (req, res, next) => {
+    let user = req.user;
+    if(user.username != req.params.id){
+        res.status(400).send("this is not your username!")
+        return;
+    }
+    next()
+}
+
 
 
 module.exports = {
@@ -86,5 +115,8 @@ module.exports = {
     validateStudent,
     validateEducatedManager,
     validateEducatedManagerorstudent,
-    validateStudentId
+    validateStudentId,
+    validateProfessor,
+    validateProfessorId,
+    validateEducatedManagerorstudentorProfessor
 }

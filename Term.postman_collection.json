@@ -1,0 +1,1203 @@
+{
+	"info": {
+		"_postman_id": "caadbeac-e49b-47b4-bc6d-e7e3ba2af108",
+		"name": "Term",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26947392"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ali\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IT Manager",
+			"item": [
+				{
+					"name": "create professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTA5OTc1LCJleHAiOjE2ODM5MTE3NzV9.dKnoO1wa14uiDTDcyfLHygevGYkhMq1iPaED7PU6jx4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ali 4\",\r\n  \"name\": \"asli\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"wqwqw\",\r\n  \"email\": \"ali@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"college\": \"CE\",\r\n  \"field\": \"CS\",\r\n  \"order\": \"professor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/professor",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"professor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get professors",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTExNzgzLCJleHAiOjE2ODM5MTM1ODN9.UI2AFrWcMadEvCTT6NbV1vZ82jLpgxN4sODpEC9atTM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/professors",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"professors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update professor by username",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTA5OTc1LCJleHAiOjE2ODM5MTE3NzV9.dKnoO1wa14uiDTDcyfLHygevGYkhMq1iPaED7PU6jx4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ali 4\",\r\n  \"name\": \"asli nistam 2\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"wqwqw\",\r\n  \"email\": \"ali@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"college\": \"CE\",\r\n  \"field\": \"CS\",\r\n  \"order\": \"professor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/professor/ali 4",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"professor",
+								"ali 4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete professor by username",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTA5OTc1LCJleHAiOjE2ODM5MTE3NzV9.dKnoO1wa14uiDTDcyfLHygevGYkhMq1iPaED7PU6jx4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/professor/ali 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"professor",
+								"ali 2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get professor by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTExNzgzLCJleHAiOjE2ODM5MTM1ODN9.UI2AFrWcMadEvCTT6NbV1vZ82jLpgxN4sODpEC9atTM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/professor/ali 3",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"professor",
+								"ali 3"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "ali 1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create student",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTExNzgzLCJleHAiOjE2ODM5MTM1ODN9.UI2AFrWcMadEvCTT6NbV1vZ82jLpgxN4sODpEC9atTM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"kiger 3\",\r\n  \"name\": \"ali\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"12345678\",\r\n  \"email\": \"ali@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"grade\":\"PHD\",\r\n  \"enteredyear\":1380,\r\n  \"enteredterm\":1,\r\n  \"gpa\":19.20,\r\n  \"college\":\"CE\",\r\n  \"field\":\"CE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/student",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"student"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update student by username",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTExNzgzLCJleHAiOjE2ODM5MTM1ODN9.UI2AFrWcMadEvCTT6NbV1vZ82jLpgxN4sODpEC9atTM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ali updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/student/kiger 3",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"student",
+								"kiger 3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete student by username",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTEzOTk0LCJleHAiOjE2ODM5MTU3OTR9.XL6eEtSsaUvjtqKyRPxGPXT1LdLztI9uXJiLdcDj-zo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/student/kiger 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"student",
+								"kiger 2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTEzOTk0LCJleHAiOjE2ODM5MTU3OTR9.XL6eEtSsaUvjtqKyRPxGPXT1LdLztI9uXJiLdcDj-zo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get student by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTEzOTk0LCJleHAiOjE2ODM5MTU3OTR9.XL6eEtSsaUvjtqKyRPxGPXT1LdLztI9uXJiLdcDj-zo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/student/kiger",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"student",
+								"kiger"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create educational manager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTEzOTk0LCJleHAiOjE2ODM5MTU3OTR9.XL6eEtSsaUvjtqKyRPxGPXT1LdLztI9uXJiLdcDj-zo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"akbar 3\",\r\n  \"name\": \"ali\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"12345678\",\r\n  \"email\": \"ali@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"college\": \"CE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/manager",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update educational manager by username",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTEzOTk0LCJleHAiOjE2ODM5MTU3OTR9.XL6eEtSsaUvjtqKyRPxGPXT1LdLztI9uXJiLdcDj-zo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ali updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/admin/manager/akbar 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"manager",
+								"akbar 2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete educational manager by username",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjgzOTE1ODM5LCJleHAiOjE2ODM5MTc2Mzl9.G7xSx0XFsgWsB8qKuZF0ogcAvDBLCihKKsAdijCDsy8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/manager/akbar 3",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"manager",
+								"akbar 3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get educational managers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ3OTExLCJleHAiOjE2ODQwNDk3MTF9.lVHSh_YaiktABLDgIFoUXwUxZ5h7A2iQjcNxFlcrgGI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/managers",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"managers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get educational manager by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxsaSIsInJvbGUiOiJJdE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ3OTExLCJleHAiOjE2ODQwNDk3MTF9.lVHSh_YaiktABLDgIFoUXwUxZ5h7A2iQjcNxFlcrgGI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/admin/manager/akbar 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"admin",
+								"manager",
+								"akbar 2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "educational manager",
+			"item": [
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ4MzkzLCJleHAiOjE2ODQwNTAxOTN9.fRnJ916H0YEJynVtuHnds4jdkOAZY5vaXN_5VMr-O-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"AlGO 2\",\r\n    \"prerequisite\":[\"DB\"],\r\n    \"need\":\"AP\",\r\n    \"unit\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/course",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create  term course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUwMjIzLCJleHAiOjE2ODQwNTIwMjN9.flsYRfRlKeOpG9U2sT5RwdFprHBioO1jvOwVivJDn24",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"DB 3\",\r\n    \"prerequisite\":[\"DB\"],\r\n    \"need\":\"AP\",\r\n    \"unit\":3,\r\n    \"classtime\":\"2012-04-23T18:25:43.511Z\",\r\n    \"examtime\":\"2012-04-23T18:25:43.511Z\",\r\n    \"place\":\"CE\",\r\n    \"professorname\":\"ali\",\r\n    \"capacity\":10,\r\n    \"term\":2,\r\n    \"college\":\"Math\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/course",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ4MzkzLCJleHAiOjE2ODQwNTAxOTN9.fRnJ916H0YEJynVtuHnds4jdkOAZY5vaXN_5VMr-O-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"AlGO course updated\",\r\n    \"prerequisite\":[\"DB\"],\r\n    \"need\":\"AP\",\r\n    \"unit\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/course/AlGO course",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"AlGO course"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Term course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ4MzkzLCJleHAiOjE2ODQwNTAxOTN9.fRnJ916H0YEJynVtuHnds4jdkOAZY5vaXN_5VMr-O-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"DB updated\",\r\n    \"prerequisite\":[\"DB\"],\r\n    \"need\":\"AP\",\r\n    \"unit\":3,\r\n    \"classtime\":\"2012-04-23T18:25:43.511Z\",\r\n    \"examtime\":\"2012-04-23T18:25:43.511Z\",\r\n    \"place\":\"CE\",\r\n    \"professorname\":\"ali\",\r\n    \"capacity\":10,\r\n    \"term\":2,\r\n    \"college\":\"Math\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/course/DB",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"DB"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete course by name",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ4MzkzLCJleHAiOjE2ODQwNTAxOTN9.fRnJ916H0YEJynVtuHnds4jdkOAZY5vaXN_5VMr-O-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/course/AlGO 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"AlGO 2"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Term course by name",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDQ4MzkzLCJleHAiOjE2ODQwNTAxOTN9.fRnJ916H0YEJynVtuHnds4jdkOAZY5vaXN_5VMr-O-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/course/DB 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"DB 2"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUwMjIzLCJleHAiOjE2ODQwNTIwMjN9.flsYRfRlKeOpG9U2sT5RwdFprHBioO1jvOwVivJDn24",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUwMjIzLCJleHAiOjE2ODQwNTIwMjN9.flsYRfRlKeOpG9U2sT5RwdFprHBioO1jvOwVivJDn24",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/course/AlGO course updated",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"AlGO course updated"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUwMjIzLCJleHAiOjE2ODQwNTIwMjN9.flsYRfRlKeOpG9U2sT5RwdFprHBioO1jvOwVivJDn24",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"students"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get students by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUwMjIzLCJleHAiOjE2ODQwNTIwMjN9.flsYRfRlKeOpG9U2sT5RwdFprHBioO1jvOwVivJDn24",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/student/kiger",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"student",
+								"kiger"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get professors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUyNzI2LCJleHAiOjE2ODQwNTQ1MjZ9.Q88867L4evup2YcT0oXmaWPc3f2l4Rsox1ERC1Nr3IQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/Professors",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"Professors"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get professors by username",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWtiYXIgMiIsInJvbGUiOiJFZHVjYXRpb25hbE1hbmFnZXIifSwiaWF0IjoxNjg0MDUyNzI2LCJleHAiOjE2ODQwNTQ1MjZ9.Q88867L4evup2YcT0oXmaWPc3f2l4Rsox1ERC1Nr3IQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/professor/ali",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"professor",
+								"ali"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "get courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoia2lnZXIgMiIsInJvbGUiOiJTdHVkZW50In0sImlhdCI6MTY4NDA1MzAyNywiZXhwIjoxNjg0MDU0ODI3fQ.Rm1pRx-UHf-jmeyTX5z0ctWPuvSCsQBHJqdLDFIAu_M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoia2lnZXIgMiIsInJvbGUiOiJTdHVkZW50In0sImlhdCI6MTY4NDA1MzAyNywiZXhwIjoxNjg0MDU0ODI3fQ.Rm1pRx-UHf-jmeyTX5z0ctWPuvSCsQBHJqdLDFIAu_M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/course/AlGO",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"AlGO"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update student by username",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoia2lnZXIgMiIsInJvbGUiOiJTdHVkZW50In0sImlhdCI6MTY4NDA1MzAyNywiZXhwIjoxNjg0MDU0ODI3fQ.Rm1pRx-UHf-jmeyTX5z0ctWPuvSCsQBHJqdLDFIAu_M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"kiger 2\",\r\n  \"name\": \"ali changed\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"12345678\",\r\n  \"email\": \"alfsdfsssfsi@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"grade\":\"PHD\",\r\n  \"enteredyear\":1380,\r\n  \"enteredterm\":1,\r\n  \"gpa\":19.20,\r\n  \"college\":\"CE\",\r\n  \"field\":\"CE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/student/kiger 2",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"student",
+								"kiger 2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "professor",
+			"item": [
+				{
+					"name": "update student by username Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxpIiwicm9sZSI6IlByb2Zlc3NvciJ9LCJpYXQiOjE2ODQwNTQ4ODksImV4cCI6MTY4NDA1NjY4OX0.h5-ZX7fYZUmKCLh1uNFf6ZgrdtaetYrqMwNreQNCmFE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ali\",\r\n  \"name\": \"ali updated by professor\",\r\n  \"id\": \"0050522815\",\r\n  \"password\": \"12345678\",\r\n  \"email\": \"ali@gmail.com\",\r\n  \"phonenumber\": \"09354368739\",\r\n  \"college\": \"CE\",\r\n  \"field\": \"CS\",\r\n  \"order\": \"professor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/professor/ali",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"professor",
+								"ali"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxpIiwicm9sZSI6IlByb2Zlc3NvciJ9LCJpYXQiOjE2ODQwNTQ4ODksImV4cCI6MTY4NDA1NjY4OX0.h5-ZX7fYZUmKCLh1uNFf6ZgrdtaetYrqMwNreQNCmFE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/courses",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiYWxpIiwicm9sZSI6IlByb2Zlc3NvciJ9LCJpYXQiOjE2ODQwNTQ4ODksImV4cCI6MTY4NDA1NjY4OX0.h5-ZX7fYZUmKCLh1uNFf6ZgrdtaetYrqMwNreQNCmFE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3030/course/AlGO",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"course",
+								"AlGO"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
