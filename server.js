@@ -9,6 +9,7 @@ const StidentsApi = require("./routes/studentsApi");
 const StudentApi = require("./routes/studentApi");
 const ProfessorsApi = require("./routes/professorsApi")
 const professorApi = require("./routes/professorApi");
+const YAML = require('yamljs');
 const PORT = process.env.PORT || 3030;
 
 
@@ -18,6 +19,12 @@ const app = express();
 app.use(express.json());
 
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = YAML.load('./openapi.yaml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+//app.use('/admin',ItManagerRoutes);
 app.use('/admin',validate,validateManager,ItManagerRoutes);
 app.use('/login',loginRoutes);
 
@@ -33,6 +40,8 @@ app.use("/student",validate,StudentApi)
 app.use("/Professors",validate,ProfessorsApi)
 
 app.use("/Professor",validate,professorApi)
+
+
 
 app.listen(PORT, () =>{
     console.log(`server started on port ${PORT}`)
