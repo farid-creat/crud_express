@@ -1,0 +1,597 @@
+openapi: 3.0.0
+info:
+  title: Term
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3030/'
+tags:
+  - name: login
+  - name: IT Manager
+  - name: educational manager
+  - name: student
+  - name: professor
+components:
+  securitySchemes:
+    jwt_auth:
+      type: apiKey
+      name: Authorization
+      in: header
+paths:
+  /login:
+    post:
+      tags:
+        - login
+      summary: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ali
+                password: '12345678'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/professor:
+    post:
+      tags:
+        - IT Manager
+      summary: create professor
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ali 4
+                name: asli
+                id: 0050522815
+                password: wqwqw
+                email: ali@gmail.com
+                phonenumber: 09354368739
+                college: CE
+                field: CS
+                order: professor
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/professors:
+    get:
+      tags:
+        - IT Manager
+      summary: get professors
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/professor/{id}:
+    put:
+      tags:
+        - IT Manager
+      summary: update professor by username
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ali 4
+                name: asli nistam 2
+                id: 0050522815
+                password: wqwqw
+                email: ali@gmail.com
+                phonenumber: 09354368739
+                college: CE
+                field: CS
+                order: professor
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - IT Manager
+      summary: delete professor by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - IT Manager
+      summary: get professor by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - in: path
+          name: id
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/student:
+    post:
+      tags:
+        - IT Manager
+      summary: create student
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: kiger 3
+                name: ali
+                id: 0050522815
+                password: '12345678'
+                email: ali@gmail.com
+                phonenumber: 09354368739
+                grade: PHD
+                enteredyear: 1380
+                enteredterm: 1
+                gpa: 19.2
+                college: CE
+                field: CE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/student/{id}:
+    put:
+      tags:
+        - IT Manager
+      summary: update student by username
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: ali updated
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string  
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - IT Manager
+      summary: delete student by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - IT Manager
+      summary: get student by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}      
+  /admin/students:
+    get:
+      tags:
+        - IT Manager
+      summary: get students
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/manager:
+    post:
+      tags:
+        - IT Manager
+      summary: create educational manager
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: akbar 3
+                name: ali
+                id: 0050522815
+                password: '12345678'
+                email: ali@gmail.com
+                phonenumber: 09354368739
+                college: CE
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/manager/{id}:
+    put:
+      tags:
+        - IT Manager
+      summary: update educational manager by username
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: ali updated
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - IT Manager
+      summary: get educational manager by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - IT Manager
+      summary: delete educational manager by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/managers:
+    get:
+      tags:
+        - IT Manager
+      summary: get educational managers
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /course:
+    post:
+      tags:
+        - educational manager
+      summary: create  term course
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: DB 3
+                prerequisite:
+                  - DB
+                need: AP
+                unit: 3
+                classtime: '2012-04-23T18:25:43.511Z'
+                examtime: '2012-04-23T18:25:43.511Z'
+                place: CE
+                professorname: ali
+                capacity: 10
+                term: 2
+                college: Math
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /course/{id}:
+    put:
+      tags:
+        - educational manager
+      summary: update course
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: DB updated
+                prerequisite:
+                  - DB
+                need: AP
+                unit: 3
+                classtime: '2012-04-23T18:25:43.511Z'
+                examtime: '2012-04-23T18:25:43.511Z'
+                place: CE
+                professorname: ali
+                capacity: 10
+                term: 2
+                college: Math
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - educational manager
+      summary: delete course by name
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - educational manager
+      summary: get course by name
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /courses:
+    get:
+      tags:
+        - professor
+      summary: get courses
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /students:
+    get:
+      tags:
+        - educational manager
+      summary: get students
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/{id}:
+    get:
+      tags:
+        - educational manager
+      summary: get students by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  
+    put:
+      tags:
+        - student
+      summary: update student by username
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: kiger 2
+                name: ali changed
+                id: 0050522815
+                password: '12345678'
+                email: alfsdfsssfsi@gmail.com
+                phonenumber: 09354368739
+                grade: PHD
+                enteredyear: 1380
+                enteredterm: 1
+                gpa: 19.2
+                college: CE
+                field: CE
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /Professors:
+    get:
+      tags:
+        - educational manager
+      summary: get professors
+      security:
+        - jwt_auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /professor/{id}:
+    get:
+      tags:
+        - educational manager
+      summary: get professors by username
+      security:
+        - jwt_auth: []
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - professor
+      summary: update student by username Copy
+      security:
+        - jwt_auth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: ali
+                name: ali updated by professor
+                id: 0050522815
+                password: '12345678'
+                email: ali@gmail.com
+                phonenumber: 09354368739
+                college: CE
+                field: CS
+                order: professor
+      parameters:
+        - name: id
+          in: path
+          description: username of professor
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
