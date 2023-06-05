@@ -11,12 +11,6 @@ Router.delete('/Professor/:id' , deleteProfessor);
 Router.get('/Professor/:id' , getAllProfessorById);
 Router.post('/student' , addStudent);
 
-
-
-
-
-
-
 Router.get('/students' , getAllStudent);
 
 Router.get('/student/:id' , getAllStudentById);
